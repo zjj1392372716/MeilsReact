@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script>
+    //  React.createClass 注册一个组件类
+    var helloworldComponent = React.createClass({
+      render: function() {
+        // 通过React.createElement创建html内容
+        return React.createElement('h1', null, 'helloworld');
+      }
+    })
+
+    // ReactDOM.render 用于将模板转换为html语言，并插入dom节点
+    ReactDOM.render(
+      React.createElement(helloworldComponent, null),
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>

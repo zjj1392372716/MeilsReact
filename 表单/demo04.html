@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    class FormName extends React.Component{
+      constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+          isGoing: false,
+          numberOf: 2
+        };
+      }
+
+
+
+      // 通过state来保存表单数据
+      handleChange (e) {
+        const target = e.target;
+
+        const value = target.type == 'checkbox' ? target.checked : target.value;
+        const name = target.name
+        this.setState({
+          [name]: value
+        })
+      }
+      
+      handleSubmit(e) {
+        alert('submit...'+ this.state.isGoing + '---' + this.state.numberOf);
+        //阻止默认跳转的事件
+        e.preventDefault();
+      }
+      render() {
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              isGoing:
+              <input type="checkbox"
+                     name="isGoing"
+                     checked={this.state.isGoing}
+                     onChange={this.handleChange}/>
+            </label>
+            <label htmlFor="">
+              Number of :
+              <input type="number" 
+                     name="numberOf"
+                     value={this.state.numberOf}
+                     onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <FormName />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>

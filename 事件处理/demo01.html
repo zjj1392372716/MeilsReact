@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    class Toggle extends React.Component{
+      constructor(props) {
+        super(props);
+        this.state = {
+          isToggle: false
+        }
+
+        this.handleClick = this.handleClick.bind(this)
+      }
+
+      handleClick () {
+        this.setState((prevState) => {
+          return {isToggle: !prevState.isToggle}
+        })
+        /**
+          类的方法默认是不会绑定 this 的。
+          如果你忘记绑定 this.handleClick 并把它传入 onClick, 
+          当你调用这个函数的时候 this 的值会是 undefined。
+
+          这就是为什么会报错setState未定义的原因了
+        */
+      }
+
+      render() {
+        return (
+          <button onClick={this.handleClick}>
+            {this.state.isToggle ? 'ON' : 'OFF'}
+          </button>
+        )
+      }
+    }
+
+
+    ReactDOM.render(
+      <Toggle />,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>

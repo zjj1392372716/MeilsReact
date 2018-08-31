@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    class FormName extends React.Component{
+      constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.state = {value: 'Please write an essay about your favorite DOM element.'};
+      }
+
+      // 通过state来保存表单数据
+      handleChange (e) {
+        this.setState({
+          value: e.target.value
+        })
+      }
+      
+      handleSubmit(e) {
+        alert('submit...'+ this.state.value);
+        //阻止默认跳转的事件
+        e.preventDefault();
+      }
+      render() {
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Name:
+              <textarea name="text"  cols="30" rows="10" onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <FormName />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>

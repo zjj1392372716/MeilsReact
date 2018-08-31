@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    function Comment (props) {
+      return (
+        <div>
+          <div className="comment">
+            <img className="userinfo" src={props.author.avatorurl} alt={props.author.name} />
+            <div className="avator">
+              {props.author.name}
+            </div>
+          </div>
+          <div className="comment-text">{props.text}</div>
+          <div className="comment-date">{formatDate(props.date)}</div>
+        </div>
+      )
+    }
+
+    function formatDate(date) {
+      return date.toLocaleDateString();
+    }
+
+    const comment = {
+      date: new Date(),
+      text: 'I hope you enjoy learning React!',
+      author: {
+        name: 'Hello Kitty',
+        avatorurl: 'http://placekitten.com/g/64/64'
+      }
+    };
+
+    ReactDOM.render(
+      <Comment date={comment.date} text={comment.text} author={comment.author} />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>

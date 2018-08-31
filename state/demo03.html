@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    class Add extends React.Component{
+      constructor(props) {
+        super(props);
+        this.state = {
+          count: 1
+        }
+      }
+      // 组件将要绑定
+      componentWillMount () {
+        console.log('1...componentWillMount');
+      }
+      // 组件绑定完成
+      componentDidMount () {
+        console.log('2...componentDidMount');
+      }
+      // 组件将要更新
+      componentWillUpdate () {
+        console.log('3...componentWillUpdate');
+      }
+      // 组件更新完毕
+      componentDidUpdate () {
+        console.log('4...componentDidUpdate');
+      }
+
+
+      // 渲染函数
+      render() {
+        return (
+          <div className="box">
+            {this.state.count}
+            <button>add</button>
+          </div>
+        )
+      }
+    };
+
+    ReactDOM.render(
+      <Add />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>

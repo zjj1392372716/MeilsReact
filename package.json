@@ -1,0 +1,21 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "http-server -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zjj1392372716/reactNote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zjj1392372716/reactNote/issues"
+  },
+  "homepage": "https://github.com/zjj1392372716/reactNote#readme"
+}

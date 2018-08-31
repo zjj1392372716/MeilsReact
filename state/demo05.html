@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    function FormateDate(props) {
+      return (
+        <h2>it is {props.date.toLocaleTimeString()}</h2>
+      )
+    }
+    class Clock extends React.Component{
+      constructor(props) {
+        super(props);
+        // 初始化state只能是再构造函数中
+        this.state = {
+          date: new Date()
+        }
+      }
+
+      componentDidMount() {
+        this.timer = setInterval(() => {
+          this.tick();
+        }, 1000)
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.timer);
+      }
+
+      tick() {
+        this.setState({
+          date: new Date()
+        })
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>hello world</h1>
+            <FormateDate date={this.state.date} />
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <Clock />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="../react/react.js"></script>
+  <script src="../react/react-dom.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.35/browser.js"></script>
+  <script type="text/babel">
+    class Clock extends React.Component{
+      constructor(props) {
+        super(props);
+        this.state = {
+          date: new Date()
+        }
+      };
+
+      render() {
+        return (
+          <div className="box">
+            <h1>hello component!</h1>
+            <h2>it is {this.state.date.toLocaleTimeString()}</h2>
+          </div>
+        )
+      }
+    };
+
+    ReactDOM.render(
+      <Clock />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>

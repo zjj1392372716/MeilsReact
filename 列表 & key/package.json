@@ -1,0 +1,9 @@
+{
+  "name": "",
+  "description": "**map()**",
+  "version": "",
+  "scripts": {
+    "server": "live-server ./ --port=9090",
+    "httpServer": "http-server -o"
+  }
+}
